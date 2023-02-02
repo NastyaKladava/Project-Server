@@ -1,0 +1,6 @@
+{
+  "port": 80,
+  "jwtSecret": "jwtSecret",
+  "mongoUri": "mongodb+srv://root:12345@project.vc7e12y.mongodb.net/?retryWrites=true&w=majority",
+  "baseURL": "http://localhost:3001"
+}
