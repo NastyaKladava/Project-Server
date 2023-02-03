@@ -1,9 +1,10 @@
 const { Router, response } = require("express");
-const config = require("config");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const router = Router();
+
+const jwtSecret = process.env.JWTSECRET;
 
 router.post("/register", async (req, res) => {
   try {
@@ -44,7 +45,7 @@ router.post("/login", async (req, res) => {
         .json({ message: "Incorrect password, try again!" });
     }
 
-    const token = jwt.sign({ userId: user.id }, config.get("jwtSecret"), {
+    const token = jwt.sign({ userId: user.id }, jwtSecret, {
       expiresIn: "1h",
     });
 
